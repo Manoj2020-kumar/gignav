@@ -9,30 +9,21 @@ class SystemSetting extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Data: Field,
-            labels: [
-                'order',
-                'code',
-                'label',
-                'desc'
-
-            ]
+            Data: Field
         }
     }
 
-    //  check =()=>{this.state.Data[0].networkSettings}
-    componentDidMount() {
-        // console.log("json Data==>>", this.state.Data[0].networkSettings.items[0].label);
-
-
-        console.log("appSettings", this.state.Data[0].appSettings.items);
-    }
-
-
-
-
 
     render() {
+        const selects = () => {
+            return this.state.Data.appSettings.items.map(el => {
+                return (
+                    <option>{el.label}</option>
+                )
+            }
+            );
+        }
+
         return (
             <div>
 
@@ -64,7 +55,7 @@ class SystemSetting extends Component {
                                             Order
             </div>
                                         <div className="input-field">
-                                            <input type="text" className="form-control" Value={this.state.Data[0].appSettings.order} />
+                                            <input type="text" className="form-control" Value={this.state.Data.appSettings.order} />
                                         </div>
                                     </div>
                                     <div className="input-group">
@@ -72,7 +63,7 @@ class SystemSetting extends Component {
                                             Code
           </div>
                                         <div className="input-field">
-                                            <input type="text" className="form-control" Value={this.state.Data[0].appSettings.code} />
+                                            <input type="text" className="form-control" Value={this.state.Data.appSettings.code} />
                                         </div>
                                     </div>
                                     <div className="input-group">
@@ -80,7 +71,7 @@ class SystemSetting extends Component {
                                             Label
             </div>
                                         <div className="input-field">
-                                            <input type="text" className="form-control" value={this.state.Data[0].appSettings.label} />
+                                            <input type="text" className="form-control" value={this.state.Data.appSettings.label} />
                                         </div>
                                     </div>
                                     <div className="input-group">
@@ -88,7 +79,7 @@ class SystemSetting extends Component {
                                             Desc
             </div>
                                         <div className="input-field">
-                                            <input type="text" className="form-control" Value={this.state.Data[0].appSettings.desc} />
+                                            <input type="text" className="form-control" Value={this.state.Data.appSettings.desc} />
                                         </div>
                                     </div>
                                     <div className="input-group">
@@ -98,12 +89,7 @@ class SystemSetting extends Component {
 
                                         <div className="input-field">
                                             <select type="text" className="form-control" >
-                                                <option value={this.state.Data[0].appSettings.items[0]}></option>
-                                                <option value={this.state.Data[0].appSettings.items[1]}></option>
-                                                <option value={this.state.Data[0].appSettings.items[2]}></option>
-                                                <option value={this.state.Data[0].appSettings.items[3]}></option>
-                                                <option value={this.state.Data[0].appSettings.items[4]}></option>
-                                                <option value={this.state.Data[0].appSettings.items[5]}></option>
+                                                {selects()}
 
                                             </select>
                                         </div>

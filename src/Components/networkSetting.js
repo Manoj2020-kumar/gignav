@@ -10,18 +10,19 @@ class NetworkSetting extends Component{
   constructor(props){
   super(props)
     this.state= {
-         Data:Field,
-         labels:[
-          'order',
-          'code',
-          'label',
-          'desc'
-
-         ]
+         Data:Field
     }
   }
 
   render(){
+    const selects =()=>{
+      return this.state.Data.networkSettings.items.map(el =>
+        {
+          return(
+            <option>{el.label}</option>
+           )}
+        );
+    }
   return (
     <div>
 	<div className="header">
@@ -159,7 +160,7 @@ class NetworkSetting extends Component{
             Order
             </div>
             <div className="input-field">
-              <input type="text"  className="form-control" Value={ this.state.Data[0].networkSettings.order}/>
+              <input type="text"  className="form-control" Value={ this.state.Data.networkSettings.order}/>
             </div>
           </div>
           <div className="input-group">
@@ -167,7 +168,7 @@ class NetworkSetting extends Component{
           Code
           </div>
           <div className="input-field">
-            <input type="text"  className="form-control" Value={ this.state.Data[0].networkSettings.code}/>
+            <input type="text"  className="form-control" Value={ this.state.Data.networkSettings.code}/>
           </div>
         </div>
           <div className="input-group">
@@ -175,7 +176,7 @@ class NetworkSetting extends Component{
             Label
             </div>
             <div className="input-field">
-              <input type="text"  className="form-control" value={ this.state.Data[0].networkSettings.label}/>
+              <input type="text"  className="form-control" value={ this.state.Data.networkSettings.label}/>
             </div>
           </div>
           <div className="input-group">
@@ -183,7 +184,7 @@ class NetworkSetting extends Component{
             Desc
             </div>
             <div className="input-field">
-              <input type="text"  className="form-control" Value={ this.state.Data[0].networkSettings.desc}/>
+              <input type="text"  className="form-control" Value={ this.state.Data.networkSettings.desc}/>
             </div>
           </div>
           <div className="input-group">
@@ -193,10 +194,7 @@ class NetworkSetting extends Component{
             
             <div className="input-field">
               <select type="text"  className="form-control" >
-                <option >{this.state.Data[0].networkSettings.items[0].label}</option>
-                <option >{this.state.Data[0].networkSettings.items[1].label}</option>
-                <option></option>
-                <option></option>
+                {selects()}
               </select>
             </div>
           </div>
